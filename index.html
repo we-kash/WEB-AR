@@ -1,39 +1,28 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <title>AR.js Web AR Example</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/ar.js"></script>
-  </head>
-  <body>
-    <a-scene embedded arjs="debugUIEnabled:false;">
-      <!-- Plane Tracking Example -->
-      <a-marker preset="custom" type="pattern" url="path/to/pattern-marker.patt">
-        <a-plane color="white" height="1" width="1" position="0 0 0"></a-plane>
-      </a-marker>
-      
-      <!-- Markerless Augmentation Example -->
-      <a-entity id="cube" geometry="primitive: box; height: 1; width: 1; depth: 1" material="color: red" position="0 0 0"></a-entity>
-      
-      <a-entity camera></a-entity>
-    </a-scene>
-    
-    <script>
-      // Plane Tracking Example
-      var marker = document.querySelector('a-marker');
-      marker.addEventListener('markerFound', function() {
-        console.log('Marker found!');
-      });
-      marker.addEventListener('markerLost', function() {
-        console.log('Marker lost!');
-      });
-      
-      // Markerless Augmentation Example
-      var cube = document.querySelector('#cube');
-      cube.addEventListener('click', function() {
-        cube.setAttribute('position', '0 1 0');
-      });
-    </script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <title>Hello WebXR!</title>
+
+  <!-- three.js -->
+  <script src="https://unpkg.com/three@0.126.0/build/three.js"></script>
+</head>
+<body>
+
+<!-- Starting an immersive WebXR session requires user interaction.
+    We start this one with a simple button. -->
+<button onclick="activateXR()">Start Hello WebXR</button>
+<script>
+async function activateXR() {
+  // Add a canvas element and initialize a WebGL context that is compatible with WebXR.
+  const canvas = document.createElement("canvas");
+  document.body.appendChild(canvas);
+  const gl = canvas.getContext("webgl", {xrCompatible: true});
+
+  // To be continued in upcoming steps.
+}
+</script>
+</body>
 </html>
